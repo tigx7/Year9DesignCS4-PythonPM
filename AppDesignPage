@@ -64,8 +64,7 @@ if final2 - initial2 == b:
 
 def current():
    now = datetime.datetime.now()
-   print ("Current date and time : ")
-   print (now.strftime("%Y-%m-%d %H:%M:%S"))
+   tkMessageBox.showinfo("Current Time","Current Time : %Y-%m-%d %H:%M:%S")
 
 StartStudy = tk.Button(root, text ="Start Studying ", command = start_time)
 StopStudy = tk.Button(root, text ="Finish Studying", command = stop_time)
@@ -97,7 +96,7 @@ PauseGame.grid(row = 1, column = 1)
 
 PauseStudy.grid(row = 1, column = 0)
 
-currentT = tk.Button(row = 5, columnspan = 2)
+currentT.grid(row = 5, columnspan = 2)
 
 
 root.mainloop()
