@@ -1,7 +1,9 @@
 import time
 import Tkinter as tk
 import tkMessageBox
+import datetime
 
+global initial
 initial = 0
 
 root = tk.Tk()
@@ -60,11 +62,10 @@ if final - initial == a:
 if final2 - initial2 == b:
    tkMessagebox.showinfo("Time up", "Your game time is up!!!")
 
-def p_game():
-   
-
-def s_game():
-
+def current():
+   now = datetime.datetime.now()
+   print ("Current date and time : ")
+   print (now.strftime("%Y-%m-%d %H:%M:%S"))
 
 StartStudy = tk.Button(root, text ="Start Studying ", command = start_time)
 StopStudy = tk.Button(root, text ="Finish Studying", command = stop_time)
@@ -72,8 +73,9 @@ StartGame = tk.Button(root, text ="Start Gaming ", command = start_game)
 StopGame = tk.Button(root, text ="Finish Gaming", command = stop_game)
 yes1 = tk.Button(root, text = "Confirm Study Time", command = yes_study)
 yes2 = tk.Button(root, text = "Confirm Game Time", command = yes_game)
-PauseGame = tk.Button(root, text = "Pause Gaming", command = p_game)
-PauseStudy = tk.Button(root, text = "Pause Studying", command = s_game)
+PauseGame = tk.Button(root, text = "Pause Gaming")
+PauseStudy = tk.Button(root, text = "Pause Studying")
+currentT = tk.Button(root, text = "Current Time", command = current)
 
 StartStudy.grid(row = 0, column = 0)
 
@@ -94,6 +96,8 @@ yes2.grid(row = 4, column = 1)
 PauseGame.grid(row = 1, column = 1)
 
 PauseStudy.grid(row = 1, column = 0)
+
+currentT = tk.Button(row = 5, columnspan = 2)
 
 
 root.mainloop()
