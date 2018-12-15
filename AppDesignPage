@@ -1,0 +1,99 @@
+import time
+import Tkinter as tk
+import tkMessageBox
+
+initial = 0
+
+root = tk.Tk()
+root.title("TimeSave")
+root.geometry('275x400')
+root.config(bg = "#FFAEAE")
+
+slide1 = tk.Scale(root,from_=0, to=8, resolution = 0.5, orient=tk.HORIZONTAL)
+slide2 = tk.Scale(root,from_=0, to=8, resolution = 0.5, orient=tk.HORIZONTAL)
+slide1.pack()
+slide2.pack()
+
+def start_time():
+   global initial
+   tkMessageBox.showinfo("Study Timer", "Your Study Time has begun",)
+   initial = time.time()
+   return initial
+
+def stop_time():
+   final = time.time()
+   tkMessageBox.showinfo("Study Timer", final - initial)
+   return initial
+
+def start_game():
+   global initial2
+   tkMessageBox.showinfo("Game Timer", "Your Gaming Time has begun") 
+   initial2 = time.time()
+   return initial2
+
+def stop_game():
+   final2 = time.time()
+   tkMessageBox.showinfo("Study Timer", final2 - initial2)
+   return initial2
+
+def yes_study():
+   a = str(slide1.get())
+   tkMessageBox.showinfo("Study Goal", "Begin your goal of studying for {0} hours".format(a))
+
+def yes_game():
+   b = str(slide2.get())
+   tkMessageBox.showinfo("Game Goal", "Begin your goal of gaming for {0} hours".format(b))
+
+a = str(slide1.get())
+b = str(slide2.get())
+
+global initial
+initial = time.time()
+global initial2
+initial2 = time.time()
+final2 = time.time()
+final = time.time()
+
+if final - initial == a:
+   tkMessageBox.showinfo("Time up", "Your study time is up!!!")
+
+if final2 - initial2 == b:
+   tkMessagebox.showinfo("Time up", "Your game time is up!!!")
+
+def p_game():
+   
+
+def s_game():
+
+
+StartStudy = tk.Button(root, text ="Start Studying ", command = start_time)
+StopStudy = tk.Button(root, text ="Finish Studying", command = stop_time)
+StartGame = tk.Button(root, text ="Start Gaming ", command = start_game)
+StopGame = tk.Button(root, text ="Finish Gaming", command = stop_game)
+yes1 = tk.Button(root, text = "Confirm Study Time", command = yes_study)
+yes2 = tk.Button(root, text = "Confirm Game Time", command = yes_game)
+PauseGame = tk.Button(root, text = "Pause Gaming", command = p_game)
+PauseStudy = tk.Button(root, text = "Pause Studying", command = s_game)
+
+StartStudy.grid(row = 0, column = 0)
+
+StopStudy.grid(row = 2, column = 0)
+
+StartGame.grid(row = 0, column = 1)
+
+StopGame.grid(row = 2, column = 1)
+
+slide1.grid(row = 3, column = 0)
+
+slide2.grid(row = 4, column = 0)
+
+yes1.grid(row = 3, column = 1)
+
+yes2.grid(row = 4, column = 1)
+
+PauseGame.grid(row = 1, column = 1)
+
+PauseStudy.grid(row = 1, column = 0)
+
+
+root.mainloop()
